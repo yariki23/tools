@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const loader = require("sass-loader");
 
-export default module.exports = (env, argv) => {
+module.exports = (env, argv) => {
   const isProduction = argv.mode === "production";
   const config = {
     devtool: "eval-source-map",
@@ -14,11 +14,7 @@ export default module.exports = (env, argv) => {
       rules: [
         {
           test: /\.s?css$/i,
-          use: [
-            isProduction ? MiniCssExtractPlugin.loader : "sass-loader",
-            "style-loader",
-            "css-loader",
-          ],
+          use: ["sass-loader", "style-loader", "css-loader"],
         },
         {
           test: /\.(jpg|png)$/i,

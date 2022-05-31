@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const loader = require("sass-loader");
+// const loader = require("sass-loader");
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === "production";

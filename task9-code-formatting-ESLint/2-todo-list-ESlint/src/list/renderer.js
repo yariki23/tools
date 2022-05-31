@@ -1,5 +1,5 @@
 // import { getItem, setItem } from "./storage.js";
-import { getTasksList } from "./taskGeteway.js";
+import { getTasksList } from "./taskGeteway";
 
 const listElem = document.querySelector(".list");
 

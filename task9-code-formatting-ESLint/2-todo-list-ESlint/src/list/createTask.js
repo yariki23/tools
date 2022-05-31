@@ -1,16 +1,16 @@
-import { createTask, getTasksList } from "./taskGeteway.js";
-import { renderTasks } from "./renderer.js";
-import { setItem } from "./storage.js";
+import { createTask, getTasksList } from './taskGeteway.js';
+import { renderTasks } from './renderer.js';
+import { setItem } from './storage.js';
 
 export const onCreateTask = () => {
-  const taskTitleInputElem = document.querySelector(".task-input");
+  const taskTitleInputElem = document.querySelector('.task-input');
 
   const text = taskTitleInputElem.value;
 
   if (!text) {
     return;
   }
-  taskTitleInputElem.value = "";
+  taskTitleInputElem.value = '';
 
   const newTask = {
     text,
@@ -21,13 +21,13 @@ export const onCreateTask = () => {
   createTask(newTask)
     .then(() => getTasksList())
     .then((newTasksList) => {
-      setItem("tasksList", newTasksList);
+      setItem('tasksList', newTasksList);
       renderTasks();
     });
 };
 
-//1. prepare data
-//2. write data to db
-//3. read new data from server
-//4. save new data to front-end storage
-//5. update UI
+// 1. prepare data
+// 2. write data to db
+// 3. read new data from server
+// 4. save new data to front-end storage
+// 5. update UI

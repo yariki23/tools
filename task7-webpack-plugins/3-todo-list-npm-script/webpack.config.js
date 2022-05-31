@@ -1,3 +1,8 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
+
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -6,15 +11,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.js$/,
+        test: /\.js$/i,
         use: ["babel-loader"],
       },
       {
-        test: /.s?css$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.s?css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
-        test: /.(jpg|png)$/,
+        test: /\.(jpg|png)$/i,
         use: [
           {
             loader: "url-loader",
@@ -28,4 +33,14 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
+  ],
 };
